@@ -20,7 +20,7 @@ class structure(models.Model):
         return self.title
 
 
-class commernt(models.Model):
+class comment(models.Model):
     post = models.ForeignKey(structure, related_name='comments')
     name = models.CharField(max_length=80)
     body = models.TextField()
