@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import structure
+from .models import structure, comment
 
 
 class structureAdmin(admin.ModelAdmin):
@@ -12,7 +12,12 @@ class structureAdmin(admin.ModelAdmin):
     ordering = ['published']
 
 
+class commentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'post', 'created', 'active')
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ('name', 'email', 'body')
 
+admin.site.register(comment, commentAdmin)
 
-admin.site.register(structure)
+admin.site.register(structure, structureAdmin)
 
