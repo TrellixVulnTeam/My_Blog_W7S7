@@ -18,3 +18,19 @@ class structure(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class commernt(models.Model):
+    post = models.ForeignKey(structure, related_name='comments')
+    name = models.CharField(max_length=80)
+    body = models.TextField()
+    email = models.EmailField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering=('created',)
+
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.name,self.post)
