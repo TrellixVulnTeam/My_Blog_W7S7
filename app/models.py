@@ -10,14 +10,10 @@ class structure(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     published = models.DateTimeField(default=timezone.now())
     updated=models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp=models.DateTimeField(auto_now=False, auto_now_add=True)
     slug=models.SlugField(max_length=250,unique_for_date='published')
 
     class Meta:
         ordering=("-published")
-
-
-
 
 
     def __str__(self):
