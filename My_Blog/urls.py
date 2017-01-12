@@ -1,7 +1,7 @@
-from django.conf.urls import url,include
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^app/', include('app.urls', namespace='app',app_name='app'))
+    url(r'^app/', include("app.urls")),
 ]
