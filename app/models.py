@@ -3,6 +3,9 @@ from django.utils.timezone import now
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
+class PublishedManager(models.Manager):
+    def get_querryset(self):
+        return super(PublishedManager, self).get_querryset().filter(status='published')
 
 class structure(models.Model):
     title=models.CharField(max_length=250)
@@ -18,6 +21,16 @@ class structure(models.Model):
 
     )
     status = models.CharField(max_length=15, choices=STATE_CHOICES, default='pending')
+    object=models.Manager()
+
+    publish=PublishedManager()
+
+
+
+
+
+
+
 
 
   #  def get_absolute_url(self):
