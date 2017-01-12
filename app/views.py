@@ -3,7 +3,7 @@ from .models import structure
 
 
 def index(request):
-    posts = structure.published.all()
+    posts = structure.object.all()
     return render(request, 'list.html', {'posts': posts})
 
 
