@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import structure,comment
 from django.core.paginator import PageNotAnInteger, Paginator, EmptyPage
-from .forms import comment
+from .forms import commentForm
 
 
 
@@ -32,10 +32,6 @@ def post_detail(request, year, month, day, post):
             new_comment.post = post
             new_comment.save()
         else:
-            comment_form = CommentForm()
-
-
-
-    return render(request, 'detail.html', {'comments': comments,'comment_form': comment_form,
-                                           'post': post})
+            comment_form = commentForm()
+    return render(request, 'detail.html', {'comments': comments, 'comment_form': comment_form, 'post': post})
 
